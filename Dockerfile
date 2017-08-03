@@ -4,15 +4,20 @@ MAINTAINER Martin Hoffesommer <3dcoder@gmail.com>
 # environment
 ENV SCM_VERSION 1.54
 ENV SCM_PKG_URL https://maven.scm-manager.org/nexus/content/repositories/releases/sonia/scm/scm-server/${SCM_VERSION}/scm-server-${SCM_VERSION}-app.tar.gz
+ENV SCM_HOME /var/lib/scm
 
-RUN apk add --update curl mercurial subversion git \
+RUN apk add --update curl mercurial \
  && rm -rf /var/cache/apk/*
 	
 RUN mkdir -p /opt && curl -Lks "$SCM_PKG_URL" | tar -zxC /opt \
- && mkdir -p /var/lib/scm \
- && chmod +x /opt/scm-server/bin/scm-server
+ && adduser -D -h /opt/scm-server -s /bin/bash scm \
+ && chown -R scm:scm /opt/scm-server \
+ && chmod +x /opt/scm-server/bin/scm-server \
+ && mkdir -p $SCM_HOME \
+ && chown -R scm:scm $SCM_HOME
  
-WORKDIR /opt/scm-server/bin
-VOLUME /var/lib/scm
+WORKDIR $SCM_HOME
+VOLUME $SCM_HOME
 EXPOSE 8080
+USER scm
 CMD ["/opt/scm-server/bin/scm-server"]

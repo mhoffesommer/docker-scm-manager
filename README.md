@@ -1,6 +1,6 @@
 # docker-scm-manager
 Docker container for SCM-Manager (http://www.scm-manager.org). Includes support
-for Mercurial, Git, and Subversion.
+for Mercurial, Git, and Subversion. Based upon Alpine Linux and Oracle JRE.
 
 ## Ports
 This image exposes port 8080.
