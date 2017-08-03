@@ -22,6 +22,7 @@ EXPOSE 8080
 USER scm
 
 COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 COPY ./users.xml.template /opt/scm-server/
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
