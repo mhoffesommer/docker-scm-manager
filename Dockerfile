@@ -19,11 +19,12 @@ RUN mkdir -p /opt && curl -Lks "$SCM_PKG_URL" | tar -zxC /opt \
 WORKDIR $SCM_HOME
 VOLUME $SCM_HOME
 EXPOSE 8080
-USER scm
 
 COPY ./docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
 COPY ./users.xml.template /opt/scm-server/
-ENTRYPOINT ["/docker-entrypoint.sh"]
 
+RUN chmod +x /docker-entrypoint.sh
+
+USER scm
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/opt/scm-server/bin/scm-server"]
