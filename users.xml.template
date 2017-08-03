@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<user-db>
+    <users>
+        <user>
+            <properties/>
+            <active>true</active>
+            <admin>true</admin>
+            <displayName>SCM Administrator</displayName>
+            <mail>scm-admin@scm-manager.org</mail>
+            <name>T_USER</name>
+            <password>T_PASS</password>
+            <type>xml</type>
+        </user>
+    </users>
+</user-db>

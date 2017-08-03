@@ -20,4 +20,9 @@ WORKDIR $SCM_HOME
 VOLUME $SCM_HOME
 EXPOSE 8080
 USER scm
+
+COPY ./docker-entrypoint.sh /
+COPY ./users.xml.template /opt/scm-server/
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 CMD ["/opt/scm-server/bin/scm-server"]
