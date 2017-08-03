@@ -25,3 +25,4 @@ mkdir /var/lib/scm
 chown 1000:1000 /var/lib/scm
 docker run -v /var/lib/scm:/var/lib/scm -p 8080:8080 mhoffesommer/scm-manager
 ```
+
