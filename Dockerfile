@@ -1,13 +1,13 @@
-FROM anapsix/alpine-java:8u144b01_server-jre
+FROM openjdk:8-jre-alpine
 MAINTAINER Martin Hoffesommer <3dcoder@gmail.com>
 
 # environment
-ENV SCM_VERSION 1.56
-ENV SCM_PKG_URL https://maven.scm-manager.org/nexus/content/repositories/releases/sonia/scm/scm-server/${SCM_VERSION}/scm-server-${SCM_VERSION}-app.tar.gz
+ENV SCM_VERSION 2.2.0
+ENV SCM_PKG_URL https://packages.scm-manager.org/repository/releases/sonia/scm/packaging/unix/${SCM_VERSION}/unix-${SCM_VERSION}-app.tar.gz
 ENV SCM_HOME /var/lib/scm
 
-RUN apk add --update curl mercurial \
- && apk add nano \
+RUN apk add --update curl mercurial git \
+ && apk add nano bash \
  && rm -rf /var/cache/apk/*
 	
 RUN mkdir -p /opt && curl -Lks "$SCM_PKG_URL" | tar -zxC /opt \
