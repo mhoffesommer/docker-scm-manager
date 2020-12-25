@@ -1,0 +1,5 @@
+version: '3'
+services:
+    scm:
+        image: mhoffesommer/scm-manager
+    
